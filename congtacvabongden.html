@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tắc và bóng đèn</title>
+</head>
+<body>
+    <script>
+        let SwitchButton = function (electricLamp) {
+            this.status = false;
+            this.electricLamp = electricLamp;
+
+            this.connectToLamp = function (electricLamp) {
+                this.electricLamp = electricLamp;
+            }
+            this.switchOff = function (){
+                this.status = false;
+                document.write("Cong tac dong <br>");
+                electricLamp.turnOff();
+            }
+            this.switchOn = function (){
+                this.status = true;
+                document.write("Cong tac mo <br>");
+                electricLamp.turnOn();
+            }
+        }
+        let ElectricLamp = function () {
+            this.status = false;
+
+            this.turnOff = function () {
+                this.status = false;
+                document.write("Den da tat <br>");
+            }
+            this.turnOn = function () {
+                this.status = true;
+                document.write("Den da bat <br>");
+            }
+            
+        }
+        let lamp = new ElectricLamp();
+        let button = new SwitchButton(lamp);
+        button.connectToLamp(lamp);
+        for (count = 0; count < 10; count++){
+            button.switchOff();
+            button.switchOn();
+        }
+    </script>
+</body>
+</html>
